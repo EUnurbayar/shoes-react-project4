@@ -15,10 +15,7 @@ const NavBar = () => {
 				<Nav.Link className="class" href="/">Home</Nav.Link>
 			</Nav.Item>
             <Nav.Item>
-				<Nav.Link href="/create" eventKey="/create">Create</Nav.Link>
-			</Nav.Item>
-			<Nav.Item>
-				<Nav.Link href="/details" eventKey="/details">Details</Nav.Link>
+				<Nav.Link href="/add" eventKey="/create">Add New Shoe</Nav.Link>
 			</Nav.Item>
 			
 		</Nav>

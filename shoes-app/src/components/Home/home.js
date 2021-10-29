@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 import API_URL from '../../config';
 import '../../App.css';
+import React from 'react';
+
 
 
 const Home = () => {
+
 	const [shoe, setShoe] = useState([]);
 	const [problem, setProblem] = useState(false);
 
@@ -24,11 +27,14 @@ const Home = () => {
 		getShoes();
 	}, []);
 
+
 	return (
 		<>
+         {/* <AliceCarousel mouseTracking items={data} /> */}
 		{ problem && <hh>{problem}</hh> }
+        
 			<div className='shoes-list'>
-			
+          
 				{shoe.map((shoe) => {
 					return (
 						<Link className="shoe" to={`/shoes/${shoe.id}`}>
@@ -36,14 +42,15 @@ const Home = () => {
 								<h2>{shoe.type}</h2>
 								<h4>{shoe.brand_name}</h4>
                                 <img src={shoe.photo}alt="/shoe.type" />
-                                <a href="">{shoe.brand_url}</a>
 							</div>
 						</Link>
 					);
 				})}
+                
 			</div>
 		</>
 	);
 };
+
 
 export default Home;
