@@ -1,0 +1,30 @@
+.App {
+  text-align: center;
+  background-color: lightslategrey;
+}
+
+header {
+	grid-row: 1;
+	grid-column: 1 / span 3;
+}
+
+.nav {
+  padding: 20px;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  background-color: lightslategrey;
+	position: sticky;
+
+}
+
+.nav-link {
+ 
+color:white !important;
+text-align: center;
+text-decoration: none;
+}
+
+
+
+
