@@ -44,10 +44,11 @@ function AddNewShoe({props}) {
 	const handleSubmit = async (event) => {
 		event.preventDefault();		
 		try {
-			const newShoe = await fetch.put(
-				`${API_URL}/shoes/${id}`,
-				newObject
-			);
+			const newShoe = await fetch(`${API_URL}/shoes`, {
+				body: JSON.stringify(setShoe),
+				'Content-Type': 'application-json'
+			  })
+		
 			newShoe.status === 201 && history.push('/');
 		} catch (error) {
 		console.log(error);
@@ -96,17 +97,18 @@ function AddNewShoe({props}) {
                  </label>
                  <label>
                     BRAND URL:
-                    <input type="text" name="name" />
+                    <input type={URL} name="name" />
                  </label>
                  <label>
                     SHHOE URL:
-                    <input type="text" name="name" />
+                    <input type={URL} name="name" />
                  </label>
                  <label>
                   PHOTO:
-                    <input type="text" name="name" />
+                    <input type={URL}  name="name" />
                  </label>
-                 <button className='app-button' type='submit'>Submi</button>
+				 <button className='app-button' type='delete' onclick={handleDelete} >Delete</button>
+                 <button className='app-button' type='submit' onclick={handleSubmit} >Submit</button>
 				 <button className='app-button' onclick={handleEdit}>Cancel</button>
             </form>
         </div>
