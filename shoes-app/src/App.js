@@ -1,4 +1,4 @@
-
+                                      
 import './App.css';
 import { Route } from 'react-router-dom';
 import NavBar from './components/Navbar/Navbar';
@@ -6,11 +6,11 @@ import Home from './components/Home/home'
 import AddNewShoe from './components/AddNewShoe/AddNewShoe';
 
 
-
-function App() {
+               
+function App() {                                                                                             
   return (
     <div className="App">
-      <header>
+      <header>                                          
        <NavBar /> 
        </header>
        <main>
@@ -18,9 +18,10 @@ function App() {
         <Route path='/add' component={AddNewShoe} />
 			</main>
 
-    </div>
+    </div>              
   );
-}
+}                                     
 
-export default App;
+                        export default App;                            
 
+                                                                                                                                                                                                             

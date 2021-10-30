@@ -28,22 +28,22 @@ const Home = () => {
 	useEffect(() => {
 		getShoes();
 	}, []);
+                                                                                                                                    
 
-
-	return (
+	return (                                                    
 		<>
-		{ problem && <hh>{problem}</hh> }
-        
-			<div className='shoes-list'>
+		{ problem && <hh>{problem}</hh> }                                            
+                                                                                  
+			<div className='cards'>
           
 				{shoe.map((shoe) => {
-					return (
-						<Link className="shoe" to={`/shoes/${shoe.id}`}>
-							<div  key={shoe.id}>
+					return (                                                                                                                           
+						<Link className="shoe" key={shoe.id} to={`/shoes/${shoe.id}`}>
+							<div className="shoes" key={shoe.id}>              
 								<h2>{shoe.type}</h2>
 								<h4>{shoe.brand_name}</h4>
-                                <img src={shoe.photo}alt="/shoe.type" />
-							</div>
+                                <img className="image" src={shoe.photo}alt="/shoe.type" />
+							</div>                                                            
 						</Link>
 					);
 				})}
@@ -51,7 +51,7 @@ const Home = () => {
 			</div>
 		</>
 	);
-};
+};                  
+                         
 
-
-export default Home;
+                      export default Home;

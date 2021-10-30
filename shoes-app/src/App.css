@@ -1,4 +1,5 @@
 .App {
+  
   text-align: center;
   background-color: lightslategrey;
 }
@@ -29,3 +30,28 @@ text-decoration: none;
 
 
 
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(130px, 1fr));
+  grid-gap: 20px;
+}
+
+.card {
+  display: grid;
+  grid-template-rows: max-content 100px 1fr;
+  object-fit: contain;
+
+}
+
+
+.img {
+  object-fit: contain;
+  overflow: hidden;
+  position: absolute;
+  width: 10%;
+  height: 10%;
+}
+
+.shoes {
+  text-decoration: none;
+}

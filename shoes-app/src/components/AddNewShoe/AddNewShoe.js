@@ -7,12 +7,13 @@ import API_URL from '../../config';
 import '../../App.css';
 
 function AddNewShoe({props}) {
-
+	const [name, setName]= useState();
     const [shoe, setShoe] = useState([]);
 	const { id } = useParams();
 	const [newShoe, setNewShoe] = useState({});
-	const [problem,setProblem] = useState(false);
 	let history = useHistory();
+
+  
 
 	const getShoes = () => {
 		axios.get(`${API_URL}/shoes/`) 
@@ -32,7 +33,7 @@ function AddNewShoe({props}) {
 	}, []);
 
     const handleChange = (event) => {
-		let name= event.target.type;
+	    let name= event.target.type;
 		let value = event.target.value;
 		setNewShoe({ ...newShoe, [name]: value });
 	};
@@ -43,11 +44,15 @@ function AddNewShoe({props}) {
 		const verify = window.confirm(`Are you sure you want to create this?`)
 		if (verify) {
 		try {
-			const Shoe = await axios.post(`${API_URL}/shoes/`, newShoe)
+			const user = {
+				name: this.target.name
+			};
+			const Shoe = await axios.post(`https://thawing-sands-01164.herokuapp.com/api-authlogin/?next=/shoes/`, {user}, newShoe)
+
 			Shoe.status === 201 && history.push('/');
 		} catch (error) {
 		console.log(error)
-		
+	
 		}
 		}  else {
 			return;
@@ -56,9 +61,9 @@ function AddNewShoe({props}) {
 	if (!shoe) {
 		<h1>loading</h1>;
 	}
+
    		 return (
       		  <div>
-				{problem && <hh>{problem}</hh>}
           	  <form>
                  <label>
                         TYPE:
@@ -115,7 +120,6 @@ function AddNewShoe({props}) {
                     <input 
 					id='id'
 					onChange={handleChange}
-					type={URL} 
 					name="brand_url" 
 					value={newShoe.brand_url}
 					/>
@@ -125,7 +129,6 @@ function AddNewShoe({props}) {
                     <input 
 					id='id'
 					onChange={handleChange}
-					type={URL} 
 					name="name" 
 					value={newShoe.brand_url}
 					 />
@@ -135,8 +138,8 @@ function AddNewShoe({props}) {
                     <input
 					id='id'
 					onChange={handleChange}
-					type={Image}
 					name="name" 
+					type="text"
 					value={newShoe.photo}/>
                  </label>
                  <button className='app-button' type='submit' onClick={handleSubmit} >Submit</button>
