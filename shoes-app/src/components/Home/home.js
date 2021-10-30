@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-// import axios from 'axios';
+import axios from 'axios';
 import API_URL from '../../config';
 import '../../App.css';
 import React from 'react';
@@ -12,17 +12,19 @@ const Home = () => {
 	const [shoe, setShoe] = useState([]);
 	const [problem, setProblem] = useState(false);
 
-	const getShoes = async () => {
-		try {
-			const res = await fetch (`${API_URL}/shoes`);
-            console.log(res)
-            const data = await res.json()
-			setShoe(data);
-            console.log(data)
-		} catch (error) {
-			setProblem(error);
+	
+	const getShoes = () => {
+		axios.get(`${API_URL}/shoes/`) 
+			
+		  .then((response) => {
+			setShoe(response.data);
+			console.log(response.data)
+		  })
+		  .catch((e) => {
+			console.error(e);
+		  });
 		}
-	};
+	  
 	useEffect(() => {
 		getShoes();
 	}, []);
@@ -30,7 +32,6 @@ const Home = () => {
 
 	return (
 		<>
-         {/* <AliceCarousel mouseTracking items={data} /> */}
 		{ problem && <hh>{problem}</hh> }
         
 			<div className='shoes-list'>

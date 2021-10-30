@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from "axios";
 import { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -8,108 +9,137 @@ import '../../App.css';
 function AddNewShoe({props}) {
 
     const [shoe, setShoe] = useState([]);
-
-    const [edit, setEdit] = useState(false);
 	const { id } = useParams();
-	const [newObject, setNewObject] = useState({});
-	
+	const [newShoe, setNewShoe] = useState({});
+	const [problem,setProblem] = useState(false);
 	let history = useHistory();
 
-	const getShoe = async () => {
-		try {
-			const res = await fetch (`${API_URL}/shoes`);
-            console.log(res)
-            const data = await res.json()
-			setShoe(data);
-            console.log(data)
-		} catch (error) {
-			console.log(error);
+	const getShoes = () => {
+		axios.get(`${API_URL}/shoes/`) 
+		  .then((response) => {
+			setShoe(response.data);
+			console.log(response.data)
+		  })
+		  .catch((e) => {
+			console.error(e);
+		  });
 		}
-	};
+	  
 	useEffect(() => {
-		getShoe();
+		getShoes();
     	
         
 	}, []);
 
-
     const handleChange = (event) => {
-		let type= event.target.type;
+		let name= event.target.type;
 		let value = event.target.value;
-		setNewObject({ ...newObject, [type]: value });
+		setNewShoe({ ...newShoe, [name]: value });
 	};
-	const handleEdit = () => {
-		setEdit(!edit);
-	};
+	
+
 	const handleSubmit = async (event) => {
 		event.preventDefault();		
-		try {
-			const newShoe = await fetch(`${API_URL}/shoes`, {
-				body: JSON.stringify(setShoe),
-				'Content-Type': 'application-json'
-			  })
-		
-			newShoe.status === 201 && history.push('/');
-		} catch (error) {
-		console.log(error);
-		}
-	};
-		const handleDelete = async (event) => {
-		const verify = window.confirm('Are you sure you want to delete?');
+		const verify = window.confirm(`Are you sure you want to create this?`)
 		if (verify) {
-			try {
-				const deleteOne = await fetch.delete(`${API_URL}/shoes/${id}`);
-				deleteOne.status === 204 && history.push('/');
-			} catch (error) {
-			console.log(error);
-			}
-		} else {
+		try {
+			const Shoe = await axios.post(`${API_URL}/shoes/`, newShoe)
+			Shoe.status === 201 && history.push('/');
+		} catch (error) {
+		console.log(error)
+		
+		}
+		}  else {
 			return;
 		}
 	};
 	if (!shoe) {
 		<h1>loading</h1>;
 	}
-	
-    return (
-        <div>
-	
-            <form>
+   		 return (
+      		  <div>
+				{problem && <hh>{problem}</hh>}
+          	  <form>
                  <label>
                         TYPE:
-                     <input type="text" name="name" />
+                     <input 
+					 id='id'
+					 onChange={handleChange}
+					 type="text" 
+					 name="type"
+					 value= {newShoe.type}
+					 />
                  </label> 
                  <label>
                     STYLING:
-                    <input type="text" name="name" />
+                    <input 
+					id='id'
+					onChange={handleChange}
+					type="text" 
+					name="styling" 
+					value= {newShoe.styling}
+					/>
                  </label>
                  <label>
-                    DETELS:
-                    <input type="text" name="name" />
+                    DETAILS:
+                    <input 
+					id='id'
+					onChange={handleChange}
+					type="text" 
+					name="details" 
+					value= {newShoe.details}
+					/>
                  </label>
                  <label>
                     DESCRIPTION:
-                    <input type="text" name="name" />
+                    <input 
+					id='id'
+					onChange={handleChange}
+					type="text" 
+					name="description" 
+					value={newShoe.description}
+					/>
                  </label>
                  <label>
                     BRAND NAME:
-                    <input type="text" name="name" />
+                    <input
+					id='id'
+					onChange={handleChange}
+					type="text" 
+					name="brand_name" 
+					value={newShoe.brand_name}
+					/>
                  </label>
                  <label>
                     BRAND URL:
-                    <input type={URL} name="name" />
+                    <input 
+					id='id'
+					onChange={handleChange}
+					type={URL} 
+					name="brand_url" 
+					value={newShoe.brand_url}
+					/>
                  </label>
                  <label>
-                    SHHOE URL:
-                    <input type={URL} name="name" />
+                    SHOE URL:
+                    <input 
+					id='id'
+					onChange={handleChange}
+					type={URL} 
+					name="name" 
+					value={newShoe.brand_url}
+					 />
                  </label>
                  <label>
                   PHOTO:
-                    <input type={URL}  name="name" />
+                    <input
+					id='id'
+					onChange={handleChange}
+					type={Image}
+					name="name" 
+					value={newShoe.photo}/>
                  </label>
-				 <button className='app-button' type='delete' onclick={handleDelete} >Delete</button>
-                 <button className='app-button' type='submit' onclick={handleSubmit} >Submit</button>
-				 <button className='app-button' onclick={handleEdit}>Cancel</button>
+                 <button className='app-button' type='submit' onClick={handleSubmit} >Submit</button>
             </form>
         </div>
     );
