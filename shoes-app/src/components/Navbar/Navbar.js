@@ -15,9 +15,9 @@ const NavBar = () => {
 				<Nav.Link className="class" href="/">Home</Nav.Link>
 			</Nav.Item>
             <Nav.Item>
-				<Nav.Link href="/add" eventKey="/create">Add New Shoe</Nav.Link>
+				<Nav.Link href="/add" className="class" eventKey="/create">Add New Shoe</Nav.Link>
 			</Nav.Item>
-			
+
 		</Nav>
 	);
 }

@@ -10,48 +10,65 @@ header {
 }
 
 .nav {
-  padding: 20px;
-  height: 50px;
   display: flex;
-  justify-content: space-around;
   background-color: lightslategrey;
-	position: sticky;
 
 }
 
 .nav-link {
- 
+
 color:white !important;
-text-align: center;
 text-decoration: none;
 }
 
-@import "react-alice-carousel/lib/alice-carousel.css";
-
-
-
+.main{
+  height: auto;
+  border: 5px;
+ 
+}
 .cards {
   display: grid;
   grid-template-columns: repeat(2, minmax(130px, 1fr));
   grid-gap: 20px;
+  
 }
+
 
 .card {
   display: grid;
   grid-template-rows: max-content 100px 1fr;
   object-fit: contain;
-
+ 
 }
 
 
-.img {
-  object-fit: contain;
-  overflow: hidden;
-  position: absolute;
-  width: 10%;
-  height: 10%;
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
 }
 
-.shoes {
-  text-decoration: none;
+.form-add{
+  
+  margin: 35px;
+  display: grid;
+  grid-gap:10px;
+ 
+}
+
+.input-add{
+  border-radius:5px ;
+  margin-left:3px ;
+}
+
+.label-add{
+ text-align:right;
+ padding: 5px;
+ color: white;
+  
+}
+button{
+  background-color: lightslategrey; 
+  color: white;
 }

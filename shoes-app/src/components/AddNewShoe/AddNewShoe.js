@@ -60,11 +60,11 @@ function AddNewShoe({props}) {
 	}
 
    		 return (
-      		  <div>
-          	  <form onSubmit={handleSubmit}>
-                 <label htmlFor='id'>
-                        TYPE:
-                     <input 
+      		  <div className='container'>
+          	  <form className="form-add" onSubmit={handleSubmit}>
+                 <label className="label-add" htmlFor='id'>
+                        TYPE : 
+                     <input className="input-add"
 					 id='id'
 					 onChange={handleChange}
 					 type="text" 
@@ -72,9 +72,9 @@ function AddNewShoe({props}) {
 					 value= {newShoe.type}
 					 />
                  </label> 
-                 <label htmlFor='id'>
-                    STYLING:
-                    <input 
+                 <label className="label-add" htmlFor='id'>
+                    STYLING :
+                    <input className="input-add"
 					id='id'
 					onChange={handleChange}
 					type="text" 
@@ -82,9 +82,9 @@ function AddNewShoe({props}) {
 					value= {newShoe.styling}
 					/>
                  </label>
-                 <label htmlFor='id' >
-                    DETAILS:
-                    <input 
+                 <label className="label-add" htmlFor='id' >
+                    DETAILS :
+                    <input className="input-add"
 					id='id'
 					onChange={handleChange}
 					type="text" 
@@ -92,9 +92,9 @@ function AddNewShoe({props}) {
 					value= {newShoe.details}
 					/>
                  </label>
-                 <label htmlFor='id'>
-                    DESCRIPTION:
-                    <input 
+                 <label className="label-add" htmlFor='id'>
+                    DESCRIPTION :
+                    <input className="input-add"
 					id='id'
 					onChange={handleChange}
 					type="text" 
@@ -102,9 +102,9 @@ function AddNewShoe({props}) {
 					value={newShoe.description}
 					/>
                  </label>
-                 <label htmlFor='id'>
-                    BRAND NAME:
-                    <input
+                 <label className="label-add" htmlFor='id'>
+                    BRAND NAME :
+                    <input className="input-add"
 					id='id'
 					onChange={handleChange}
 					type="text" 
@@ -112,27 +112,27 @@ function AddNewShoe({props}) {
 					value={newShoe.brand_name}
 					/>
                  </label>
-                 <label htmlFor='id'>
-                    BRAND URL:
-                    <input 
+                 <label className="label-add" htmlFor='id'>
+                    BRAND URL :
+                    <input className="input-add"
 					id='id'
 					onChange={handleChange}
 					name="brand_url" 
 					value={newShoe.brand_url}
 					/>
                  </label>
-                 <label htmlFor='id'>
-                    SHOE URL:
-                    <input 
+                 <label className="label-add" htmlFor='id'>
+                    SHOE URL :
+                    <input className="input-add"
 					id='id'
 					onChange={handleChange}
 					name="shoe_url" 
 					value={newShoe.shoe_url}
 					 />
                  </label>
-                 {/* <label htmlFor='id'>
-                  PHOTO:
-                    <input
+                 {/* <label className="label-add" htmlFor='id'>
+                  PHOTO :
+                    <input className="input-add"
 					id='id'
 					onChange={handleChange}
 					name="photo" 

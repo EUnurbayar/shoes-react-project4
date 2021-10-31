@@ -42,7 +42,7 @@ const Home = () => {
 							<div className="shoes" key={shoe.id}>              
 								<h2>{shoe.type}</h2>
 								<h4>{shoe.brand_name}</h4>
-                                <img className="image" src={shoe.photo}alt="/shoe.type" />
+                                {/* <img className="image" src={shoe.photo}alt="/shoe.type" /> */}
 							</div>                                                            
 						</Link>
 					);
