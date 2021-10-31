@@ -2,14 +2,12 @@ import React from 'react';
 import axios from "axios";
 import { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import API_URL from '../../config';
 import '../../App.css';
 
 function AddNewShoe({props}) {
 	
     const [shoe, setShoe] = useState([]);
-	const { id } = useParams();
 	const [newShoe, setNewShoe] = useState({});
 	let history = useHistory();
 
@@ -41,8 +39,6 @@ function AddNewShoe({props}) {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();		
-		// const verify = window.confirm(`Are you sure you want to create this?`)
-		// if (verify) {
 			try {
 			const data= new FormData()
 			   data.append('photo', newShoe.photo)
@@ -60,15 +56,15 @@ function AddNewShoe({props}) {
 		console.log(error)
 	
 		}
-		// }  else {
-		// 	return;
-		// }
+		
 	};
 	if (!shoe) {
 		<h1>loading</h1>;
 	}
 
    		 return (
+			<>
+			<h5 className='title'>Add new shoes 👠 🥾 👢!</h5>
       		  <div className='container'>
           	  <form className="form-add" onSubmit={handleSubmit}>
                  <label className="label-add" htmlFor='id'>
@@ -139,7 +135,7 @@ function AddNewShoe({props}) {
 					value={newShoe.shoe_url}
 					 />
                  </label>
-                 <label className="label-add" htmlFor='id'>
+                 <label className="label-add" htmlFor='photo'>
                   PHOTO :
                     <input className="input-add"
 					id='photo'
@@ -151,6 +147,7 @@ function AddNewShoe({props}) {
                  <button className='app-button' name=" name" type='submit' onClick={handleSubmit} >Submit</button>
             </form>
         </div>
+		</>
     );
 }
 

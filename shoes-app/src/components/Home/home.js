@@ -18,7 +18,6 @@ const Home = () => {
 			
 		  .then((response) => {
 			setShoe(response.data);
-			console.log(response.data)
 		  })
 		  .catch((e) => {
 			console.error(e);
@@ -32,16 +31,17 @@ const Home = () => {
 
 	return (                                                    
 		<>
-		{ problem && <hh>{problem}</hh> }                                            
+		{ problem && <hh>{problem}</hh> }   
+			<h2 className='title'>Here your shoe inventory!</h2>                                         
                                                                                   
 			<div className='cards'>
           
 				{shoe.map((shoe) => {
 					return (                                                                                                                           
-						<Link className="shoe" key={shoe.id} to={`/shoes/${shoe.id}`}>
+						<Link key={shoe.id} to={`/shoes/${shoe.id}`}>
 							<div className="shoes" key={shoe.id}>              
-								<h2>{shoe.type}</h2>
-								<h4>{shoe.brand_name}</h4>
+								<h4 className="text">{shoe.type}</h4>
+								<h4 className="text">{shoe.brand_name}</h4>
                                 <img className="image" src={shoe.photo}alt="/shoe.type" />
 							</div>                                                            
 						</Link>
@@ -53,5 +53,4 @@ const Home = () => {
 	);
 };                  
                          
-
-                      export default Home;
+  export default Home;

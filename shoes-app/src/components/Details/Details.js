@@ -2,7 +2,6 @@ import React from 'react';
 import axios from "axios";
 import { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import API_URL from '../../config';
 import '../../App.css';
 
@@ -33,19 +32,21 @@ function Details({props}) {
 		setEdit(!edit);
 	};
 	const handleSubmit = async (event) => {
+		
 		event.preventDefault();		
 		try {
 			const data= new FormData()
-			   data.append('photo', newShoe.photo)
-			   data.append('type', newShoe.type)
-			   data.append('brand_name', newShoe.brand_name)
-			   data.append('brand_url', newShoe.brand_url)
-			   data.append('styling', newShoe.styling)
-			   data.append('details', newShoe.details)
-			   data.append('description', newShoe.description)
+			   data.append('photo', newObject.photo)
+			   data.append('type', newObject.type)
+			   data.append('brand_name',newObject.brand_name)
+			   data.append('brand_url', newObject.brand_url)
+			   data.append('styling', newObject.styling)
+			   data.append('details', newObject.details)
+			   data.append('description', newObject.description)
 			
-			const newShoe = await axios.post(`${API_URL}/shoes/`, data, {'Content-Type': 'multipart/form-data',})
-			newShoe.status === 201 && history.push('/');
+			const newObject= await axios.post(`${API_URL}/shoes/`, data, {'Content-Type': 'multipart/form-data',})
+			newObject.status === 201 && history.push('/');
+			console.log(newObject)
 		} catch (error) {
 			console.log(error);
 		}
@@ -70,71 +71,69 @@ function Details({props}) {
             <>
         	{!edit ? (
                 <>
-                <div className='detail-attraction'>
-						<h1 id='detail-item-name'>{singleShoe.type}</h1>
-						<p className='detail-item' id='detail-item-description'>
-							{singleShoe.description}
-						</p>
-						<section id='detail-item-addresses'>
-							<p className='detail-item'>Address: {singleShoe.brand_name}</p>
-							<a
+                <div className='detail-shoes'>
+						<h5 className='detail-item'>Brand Name: ✧ {singleShoe.brand_name}</h5>
+						<h5  className='detail-item'id='detail-shoe-item'> Tpye of the Shoe:✧ {singleShoe.type}</h5>
+						<h5 className='detail-item' id='detail-shoe-item'> Description : ✧
+							 {singleShoe.description}
+						</h5>
+						<img src={singleShoe.photo} alt="shoe" id='detail-shoe-item'></img> 
+						<section id='detail-item'>
+							<a className='detail-item'
 								href={`${singleShoe.brand_url}`}
 								alt='website link'
-								className='detail-item'
 								id='detail-item-link'>
-								Brand URL : {singleShoe.brand_url}
+								Brand URL : ✧ {singleShoe.brand_url}
 							</a>
-							<img src={singleShoe.file} alt="">
-								{singleShoe.file}
-							</img> 
 						</section>
-						<aside className='buttons-flex'>
-							<button className='app-button' onClick={handleEdit}>
+							<button className='singleItem-button' onClick={handleEdit}>
 								Edit
 							</button>
-							<button className='app-button' onClick={handleDelete}>
+							<button className='singleItem-button' onClick={handleDelete}>
 								Delete
 							</button>
-						</aside>
 					</div>
                 </>
             ):(
                 <>
-             <form className="form" onSubmit={handleSubmit} onEdit={handleEdit}>
-                 <label className="label-add" htmlFor='id'>
+			     
+				 <h5 className='title'>Edit your Shoe 👠 👢!</h5>
+				 <div className='edit-container'>
+                 <form className="form-edit" onSubmit={handleSubmit} onEdit={handleEdit}>
+                 <label className="label-edit" htmlFor='id'>
                         TYPE : 
-                     <input className="input-add"
+                     <input className="input-edit"
 					 id='id'
                      onSubmit={handleSubmit}
 					 onChange={handleChange}
 					 type="text" 
 					 name="type"
-					 value= {singleShoe.type}
+					 value= {newObject.type}
 					 />
                  </label> 
-                 <label className="label-add" htmlFor='id'>
+                 <label className="label-edit" htmlFor='id'>
                     STYLING :
-                    <input className="input-add"
+                    <input className="input-edit"
 					id='id'
                     onSubmit={handleSubmit}
 					onChange={handleChange}
 					type="text" 
 					name="styling" 
-					value= {singleShoe.styling}
+					value= {newObject.styling}
 					/>
                  </label>
-                 <label className="label-add" htmlFor='id' >
+                 <label className="label-edit" htmlFor='id' >
                     DETAILS :
-                    <input className="input-add"
+                    <input className="input-edit"
 					id='id'
                     onSubmit={handleSubmit}
 					onChange={handleChange}
 					type="text" 
 					name="details" 
-					value= {singleShoe.details}
+					value= {newObject.details}
 					/>
                  </label>
-                 <label className="label-add" htmlFor='id'>
+                 <label className="label-edit" htmlFor='id'>
                     DESCRIPTION :
                     <input className="input-add"
 					id='id'
@@ -142,52 +141,53 @@ function Details({props}) {
 					onChange={handleChange}
 					type="text" 
 					name="description" 
-					value={singleShoe.description}
+					value={newObject.description}
 					/>
                  </label>
-                 <label className="label-add" htmlFor='id'>
+                 <label className="label-edit" htmlFor='id'>
                     BRAND NAME :
-                    <input className="input-add"
+                    <input className="input-edit"
 					id='id'
                     onSubmit={handleSubmit}
 					onChange={handleChange}
 					type="text" 
 					name="brand_name" 
-					value={singleShoe.brand_name}
+					value={newObject.brand_name}
 					/>
                  </label>
-                 <label className="label-add" htmlFor='id'>
+                 <label className="label-edit" htmlFor='id'>
                     BRAND URL :
-                    <input className="input-add"
+                    <input className="input-edit"
 					id='id'
                     onSubmit={handleSubmit}
 					onChange={handleChange}
 					name="brand_url" 
-					value={singleShoe.brand_url}
+					value={newObject.brand_url}
 					/>
                  </label>
-                 <label className="label-add" htmlFor='id'>
+                 <label className="label-edit" htmlFor='id'>
                     SHOE URL :
-                    <input className="input-add"
+                    <input className="input-edit"
 					id='id'
                     onSubmit={handleSubmit}
 					onChange={handleChange}
 					name="shoe_url" 
-					value={singleShoe.shoe_url}
+					value={newObject.shoe_url}
 					 />
                  </label>
-				 <label className="label-add" htmlFor='id'>
+				 <label className="label-edit" htmlFor='id'>
                   PHOTO :
-                    <input className="input-add"
+                    <input className="input-edit"
 					id='photo'
-					onChange={e=>setNewShoe({...newShoe,photo: e.target.files[0]})}
+					onChange={e=>setNewObject({...newObject, photo: e.target.files[0]})}
 					name="photo" 
 					type="file"
 					/>
                  </label>
-                 <button className='app-button' type='submit' onclick={handleEdit}> Submit </button>
-				 <button className='app-button' onclick={handleChange}>Cancel</button>
+                 <button className='edit-button' onClick={handleSubmit} type='submit'> Submit </button>
+				 <button className='edit-button' onClick={handleEdit}>Cancel</button>
             </form>
+			</div>
             </>
           )}
         </>

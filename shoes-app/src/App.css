@@ -9,6 +9,7 @@ header {
 	grid-column: 1 / span 3;
 }
 
+
 .nav {
   display: flex;
   background-color: lightslategrey;
@@ -16,7 +17,6 @@ header {
 }
 
 .nav-link {
-
 color:white !important;
 text-decoration: none;
 }
@@ -24,21 +24,39 @@ text-decoration: none;
 .main{
   height: auto;
   border: 5px;
+  height: 2000px;
  
 }
+/* home page */
 .cards {
   display: grid;
   grid-template-columns: repeat(2, minmax(130px, 1fr));
   grid-gap: 20px;
+  margin: 25px;
+  padding-top: 20px;
+  text-decoration: none;
   
 }
-
 
 .card {
   display: grid;
   grid-template-rows: max-content 100px 1fr;
   object-fit: contain;
  
+}
+
+.shoes{
+  text-decoration: none;
+}
+
+.title{
+   margin-top: 35px;
+   color: white;
+}
+
+.text {
+  color: white;
+  text-decoration: none;
 }
 
 
@@ -71,4 +89,44 @@ text-decoration: none;
 button{
   background-color: lightslategrey; 
   color: white;
+}
+
+
+/* detail components css */
+.detail-shoes{
+  margin-top: 35px;
+}
+.edit-container{
+
+  color :white ;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.form-edit{
+
+  margin: 35px;
+  display: grid;
+  grid-gap:10px;
+  text-align:right;
+  
+}
+
+.input-edit{
+  border-radius:5px ;
+  margin-left:3px ;
+}
+
+
+.detail-item{
+  color: white;
+  text-decoration: none;
+  margin: 5px;
+  padding: 10px;
+}
+
+.singleItem-button{
+  width: 10%;
+  margin: 8px;
 }
