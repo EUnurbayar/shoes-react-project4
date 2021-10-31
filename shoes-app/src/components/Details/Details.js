@@ -8,6 +8,7 @@ import '../../App.css';
 
 function Details({props}) {
 	
+	const [newShoe, setNewShoe] = useState({});
     const [singleShoe, setSingleShoe] = useState([]);
     const [newObject, setNewObject] = useState({});
 	const [edit, setEdit] = useState(false);
@@ -34,10 +35,16 @@ function Details({props}) {
 	const handleSubmit = async (event) => {
 		event.preventDefault();		
 		try {
-			const newShoe = await axios.put(
-				`${API_URL}/shoes/${id}`,
-				newObject
-			);
+			const data= new FormData()
+			   data.append('photo', newShoe.photo)
+			   data.append('type', newShoe.type)
+			   data.append('brand_name', newShoe.brand_name)
+			   data.append('brand_url', newShoe.brand_url)
+			   data.append('styling', newShoe.styling)
+			   data.append('details', newShoe.details)
+			   data.append('description', newShoe.description)
+			
+			const newShoe = await axios.post(`${API_URL}/shoes/`, data, {'Content-Type': 'multipart/form-data',})
 			newShoe.status === 201 && history.push('/');
 		} catch (error) {
 			console.log(error);
@@ -77,6 +84,9 @@ function Details({props}) {
 								id='detail-item-link'>
 								Brand URL : {singleShoe.brand_url}
 							</a>
+							<img src={singleShoe.file} alt="">
+								{singleShoe.file}
+							</img> 
 						</section>
 						<aside className='buttons-flex'>
 							<button className='app-button' onClick={handleEdit}>
@@ -166,15 +176,14 @@ function Details({props}) {
 					value={singleShoe.shoe_url}
 					 />
                  </label>
-                 <label className="label-add" htmlFor='id'>
+				 <label className="label-add" htmlFor='id'>
                   PHOTO :
                     <input className="input-add"
-					id='id'
-                    onSubmit={handleSubmit}
-					onChange={handleChange}
+					id='photo'
+					onChange={e=>setNewShoe({...newShoe,photo: e.target.files[0]})}
 					name="photo" 
-					type="text"
-					value={singleShoe.photo}/>
+					type="file"
+					/>
                  </label>
                  <button className='app-button' type='submit' onclick={handleEdit}> Submit </button>
 				 <button className='app-button' onclick={handleChange}>Cancel</button>

@@ -41,19 +41,28 @@ function AddNewShoe({props}) {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();		
-		const verify = window.confirm(`Are you sure you want to create this?`)
-		if (verify) {
+		// const verify = window.confirm(`Are you sure you want to create this?`)
+		// if (verify) {
 			try {
-			const Shoe = await axios.post(`${API_URL}/shoes/`, newShoe)
-			console.log(newShoe)
+			const data= new FormData()
+			   data.append('photo', newShoe.photo)
+			   data.append('type', newShoe.type)
+			   data.append('brand_name', newShoe.brand_name)
+			   data.append('brand_url', newShoe.brand_url)
+			   data.append('styling', newShoe.styling)
+			   data.append('details', newShoe.details)
+			   data.append('description', newShoe.description)
+			
+			const Shoe = await axios.post(`${API_URL}/shoes/`, data, {'Content-Type': 'multipart/form-data',})
+			console.log(Shoe)
 			Shoe.status === 201 && history.push('/');
 		} catch (error) {
 		console.log(error)
 	
 		}
-		}  else {
-			return;
-		}
+		// }  else {
+		// 	return;
+		// }
 	};
 	if (!shoe) {
 		<h1>loading</h1>;
@@ -130,15 +139,15 @@ function AddNewShoe({props}) {
 					value={newShoe.shoe_url}
 					 />
                  </label>
-                 {/* <label className="label-add" htmlFor='id'>
+                 <label className="label-add" htmlFor='id'>
                   PHOTO :
                     <input className="input-add"
-					id='id'
-					onChange={handleChange}
+					id='photo'
+					onChange={e=>setNewShoe({...newShoe,photo: e.target.files[0]})}
 					name="photo" 
-					type="text"
-					value={newShoe.photo}/>
-                 </label> */}
+					type="file"
+					/>
+                 </label>
                  <button className='app-button' name=" name" type='submit' onClick={handleSubmit} >Submit</button>
             </form>
         </div>
