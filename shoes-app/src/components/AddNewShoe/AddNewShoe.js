@@ -7,7 +7,7 @@ import API_URL from '../../config';
 import '../../App.css';
 
 function AddNewShoe({props}) {
-	const [name, setName]= useState();
+	
     const [shoe, setShoe] = useState([]);
 	const { id } = useParams();
 	const [newShoe, setNewShoe] = useState({});
@@ -33,7 +33,7 @@ function AddNewShoe({props}) {
 	}, []);
 
     const handleChange = (event) => {
-	    let name= event.target.type;
+	    let name= event.target.name;
 		let value = event.target.value;
 		setNewShoe({ ...newShoe, [name]: value });
 	};
@@ -43,12 +43,8 @@ function AddNewShoe({props}) {
 		event.preventDefault();		
 		const verify = window.confirm(`Are you sure you want to create this?`)
 		if (verify) {
-		try {
-			const user = {
-				name: this.target.name
-			};
-			const Shoe = await axios.post(`https://thawing-sands-01164.herokuapp.com/api-authlogin/?next=/shoes/`, {user}, newShoe)
-
+			try {
+			const Shoe = await axios.post(`${API_URL}/shoes/`, newShoe)
 			Shoe.status === 201 && history.push('/');
 		} catch (error) {
 		console.log(error)
@@ -64,8 +60,8 @@ function AddNewShoe({props}) {
 
    		 return (
       		  <div>
-          	  <form>
-                 <label>
+          	  <form onSubmit={handleSubmit}>
+                 <label htmlFor='id'>
                         TYPE:
                      <input 
 					 id='id'
@@ -75,7 +71,7 @@ function AddNewShoe({props}) {
 					 value= {newShoe.type}
 					 />
                  </label> 
-                 <label>
+                 <label htmlFor='id'>
                     STYLING:
                     <input 
 					id='id'
@@ -85,7 +81,7 @@ function AddNewShoe({props}) {
 					value= {newShoe.styling}
 					/>
                  </label>
-                 <label>
+                 <label htmlFor='id' >
                     DETAILS:
                     <input 
 					id='id'
@@ -95,7 +91,7 @@ function AddNewShoe({props}) {
 					value= {newShoe.details}
 					/>
                  </label>
-                 <label>
+                 <label htmlFor='id'>
                     DESCRIPTION:
                     <input 
 					id='id'
@@ -105,7 +101,7 @@ function AddNewShoe({props}) {
 					value={newShoe.description}
 					/>
                  </label>
-                 <label>
+                 <label htmlFor='id'>
                     BRAND NAME:
                     <input
 					id='id'
@@ -115,7 +111,7 @@ function AddNewShoe({props}) {
 					value={newShoe.brand_name}
 					/>
                  </label>
-                 <label>
+                 <label htmlFor='id'>
                     BRAND URL:
                     <input 
 					id='id'
@@ -124,25 +120,25 @@ function AddNewShoe({props}) {
 					value={newShoe.brand_url}
 					/>
                  </label>
-                 <label>
+                 <label htmlFor='id'>
                     SHOE URL:
                     <input 
 					id='id'
 					onChange={handleChange}
-					name="name" 
-					value={newShoe.brand_url}
+					name="shoe_url" 
+					value={newShoe.shoe_url}
 					 />
                  </label>
-                 <label>
+                 <label htmlFor='id'>
                   PHOTO:
                     <input
 					id='id'
 					onChange={handleChange}
-					name="name" 
+					name="photo" 
 					type="text"
 					value={newShoe.photo}/>
                  </label>
-                 <button className='app-button' type='submit' onClick={handleSubmit} >Submit</button>
+                 <button className='app-button' name=" name" type='submit' onClick={handleSubmit} >Submit</button>
             </form>
         </div>
     );
