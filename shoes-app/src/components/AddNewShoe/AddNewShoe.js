@@ -45,6 +45,7 @@ function AddNewShoe({props}) {
 		if (verify) {
 			try {
 			const Shoe = await axios.post(`${API_URL}/shoes/`, newShoe)
+			console.log(newShoe)
 			Shoe.status === 201 && history.push('/');
 		} catch (error) {
 		console.log(error)
@@ -129,7 +130,7 @@ function AddNewShoe({props}) {
 					value={newShoe.shoe_url}
 					 />
                  </label>
-                 <label htmlFor='id'>
+                 {/* <label htmlFor='id'>
                   PHOTO:
                     <input
 					id='id'
@@ -137,7 +138,7 @@ function AddNewShoe({props}) {
 					name="photo" 
 					type="text"
 					value={newShoe.photo}/>
-                 </label>
+                 </label> */}
                  <button className='app-button' name=" name" type='submit' onClick={handleSubmit} >Submit</button>
             </form>
         </div>
