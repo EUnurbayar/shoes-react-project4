@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+## Your group members and scrum leader (if applicable) 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- Individual project by Eegii Unurbayar
 
-## Available Scripts
+### Your project idea 
 
-In the project directory, you can run:
+- This app is a personal  (shoes shell in a pocket) application for shoe lovers!   A user can use  this application as her personal shoes notebook which shows her shoes details so she can use when she shopping  for new shoes without duplicating the shoe style or color or can use the informations of shoes details help her to choose wisely the new one.
 
-### `npm start`
+### Your tech stack (frontend, backend, database)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- React
+- Django
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### List of backend models and their properties
 
-### `npm test`
+  - Shoes (models.Model):
+         - type = models.CharField(max_length=100)
+         - image = models.CharField(max_length=100)
+         - detail = models.CharField(max_length=100) 
+         - description = models.CharField(max_length=100) 
+         - brand_name = models.CharField(max_length=100)
+         - brand_url = models.TextField()
+          
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### React component hierarchy (if applicable)
 
-### `npm run build`
+- app 
+   - home 
+   - nav
+   - detail
+   - shop
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### User stories
+- As a user I want to have fully functioning application
+- As a suer I want to add, delete,  update shoes collection
+- As a user I want to see my shoes images
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Wireframes
+![Screen Shot 2021-10-24 at 7 25 41 PM](https://media.git.generalassemb.ly/user/37355/files/30676f80-3500-11ec-990a-55d9e3be7c86)
+![Screen Shot 2021-10-24 at 8 02 04 PM](https://media.git.generalassemb.ly/user/37355/files/46c3fa00-3505-11ec-8f51-802cf07baf86)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### App Image
+![Screen Shot 2021-10-31 at 9 45 11 PM](https://media.git.generalassemb.ly/user/37355/files/dcc2cc00-3a93-11ec-95a4-4a35f1e35a49)
 
-### `npm run eject`
+![Screen Shot 2021-10-31 at 9 46 11 PM](https://media.git.generalassemb.ly/user/37355/files/febc4e80-3a93-11ec-954b-b647e895749c)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Screen Shot 2021-10-31 at 9 47 00 PM](https://media.git.generalassemb.ly/user/37355/files/1b588680-3a94-11ec-8a4d-d918e775c061)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Anything else your squad lead should know
+- Because of my class and my project week overlap I am only focusing on MVP.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
