@@ -99,7 +99,7 @@ function Details({props}) {
 			     
 				 <h5 className='title'>Edit your Shoe 👠 👢!</h5>
 				 <div className='edit-container'>
-                 <form className="form-edit" onSubmit={handleSubmit} onEdit={handleEdit}>
+                 <form className="form-edit" onSubmit={handleSubmit}  onChange={handleChange} >
                  <label className="label-edit" htmlFor='id'>
                         TYPE : 
                      <input className="input-edit"
@@ -184,8 +184,8 @@ function Details({props}) {
 					type="file"
 					/>
                  </label>
-                 <button className='edit-button' onClick={handleSubmit} type='submit'> Submit </button>
-				 <button className='edit-button' onClick={handleEdit}>Cancel</button>
+                 <button className='edit-button' onClick={handleEdit} type='submit'> Submit </button>
+				 <button className='edit-button' onClick={handleSubmit}>Cancel</button>
             </form>
 			</div>
             </>
